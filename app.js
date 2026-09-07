@@ -15,23 +15,15 @@ function iso(d) {
     .slice(0, 10);
 }
 
-function esc(s){
-  return String(s||"").replace(/[&<>"']/g,m=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  }[m]))
+function esc(s) {
+  return String(s || "").replace(/[&<>"']/g, m => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[m]));
 }
-
-function linkify(s){
-  return esc(s).replace(
-    /(https?:\/\/[^\s<]+)/g,
-    '<a href="$1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">$1</a>'
-  )
-}
-
 
 function fmt(d) {
   return new Intl.DateTimeFormat("th-TH", {
@@ -294,7 +286,7 @@ function row(item, type) {
               ? " · " + item.qty + " ชิ้น"
               : ""
           }
-          ${item.notes?" · "+linkify(item.notes):""}
+          ${item.notes ? " · " + esc(item.notes) : ""}
         </div>
       </div>
 
