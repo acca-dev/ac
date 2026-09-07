@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>My List — ซื้อของ & งาน</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">✓</div><div><b>My List</b><small>ซื้อของ & งาน</small></div></div>
+    <nav>
+      <button class="nav active" data-page="home">⌂ <span>หน้าแรก</span></button>
+      <button class="nav" data-page="shopping">🛒 <span>ซื้อของ</span></button>
+      <button class="nav" data-page="tasks">✓ <span>งาน</span></button>
+      <button class="nav" data-page="calendar">▦ <span>ปฏิทิน</span></button>
+    </nav>
+    <div class="side-note">ข้อมูลเวอร์ชันนี้เก็บไว้ในเครื่องของคุณก่อน<br>ขั้นต่อไปจะเชื่อมฐานข้อมูลออนไลน์</div>
+  </aside>
+
+  <main>
+    <header>
+      <div><div class="eyebrow" id="todayLabel"></div><h1 id="pageTitle">วันนี้</h1></div>
+      <button class="primary" id="quickAdd">＋ เพิ่มรายการ</button>
+    </header>
+
+    <section id="home" class="page active">
+      <div class="stats">
+        <div class="stat"><span>งานวันนี้</span><strong id="todayTasks">0</strong></div>
+        <div class="stat"><span>ต้องซื้อ</span><strong id="pendingShopping">0</strong></div>
+        <div class="stat"><span>เสร็จแล้ว</span><strong id="doneTasks">0</strong></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><div class="cardhead"><h2>งานที่ใกล้ถึง</h2><button class="textbtn" data-page-link="tasks">ดูทั้งหมด</button></div><div id="homeTasks"></div></div>
+        <div class="card"><div class="cardhead"><h2>รายการที่ต้องซื้อ</h2><button class="textbtn" data-page-link="shopping">ดูทั้งหมด</button></div><div id="homeShopping"></div></div>
+      </div>
+    </section>
+
+    <section id="shopping" class="page">
+      <div class="toolbar"><input id="shopSearch" placeholder="ค้นหารายการซื้อ…"><select id="shopFilter"><option value="all">ทั้งหมด</option><option value="pending">ยังไม่ซื้อ</option><option value="done">ซื้อแล้ว</option></select></div>
+      <div class="card"><div class="cardhead"><h2>รายการซื้อ</h2><button class="primary small" id="addShopping">＋ เพิ่มของ</button></div><div id="shoppingList"></div></div>
+    </section>
+
+    <section id="tasks" class="page">
+      <div class="toolbar"><input id="taskSearch" placeholder="ค้นหางาน…"><select id="taskFilter"><option value="all">ทั้งหมด</option><option value="open">ยังไม่เสร็จ</option><option value="done">เสร็จแล้ว</option></select></div>
+      <div class="card"><div class="cardhead"><h2>งาน</h2><button class="primary small" id="addTask">＋ เพิ่มงาน</button></div><div id="taskList"></div></div>
+    </section>
+
+    <section id="calendar" class="page">
+      <div class="calendarHead"><button id="prevMonth">‹</button><h2 id="monthTitle"></h2><button id="nextMonth">›</button><button class="textbtn" id="todayBtn">วันนี้</button></div>
+      <div class="calendar card"><div class="weekdays"><b>อา</b><b>จ</b><b>อ</b><b>พ</b><b>พฤ</b><b>ศ</b><b>ส</b></div><div id="calendarGrid" class="days"></div></div>
+      <div class="card"><h2 id="selectedDateTitle">รายการของวันที่เลือก</h2><div id="selectedEvents"></div></div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox"><div class="modalhead"><h2 id="modalTitle">เพิ่มรายการ</h2><button id="closeModal">×</button></div><form id="itemForm"><input type="hidden" id="itemType"><input type="hidden" id="itemId">
+  <label>ชื่อรายการ<input id="name" required placeholder="เช่น ซื้อน้ำดื่ม / ส่งเอกสาร"></label>
+  <label>วันที่<input id="date" type="date" required></label>
+  <label id="timeWrap">เวลา<input id="time" type="time"></label>
+  <label id="categoryWrap">หมวดหมู่<input id="category" placeholder="เช่น อาหาร, ของใช้"></label>
+  <label id="qtyWrap">จำนวน<input id="qty" type="number" min="1" value="1"></label>
+  <label id="priorityWrap">ความสำคัญ<select id="priority"><option value="normal">ปกติ</option><option value="high">สูง</option><option value="low">ต่ำ</option></select></label>
+  <label>หมายเหตุ<textarea id="notes" rows="3" placeholder="รายละเอียดเพิ่มเติม เช่น ยี่ห้อ ขนาด สี หรือสิ่งที่ต้องจำ"></textarea></label>
+  <div class="formactions"><button type="button" class="secondary" id="cancelModal">ยกเลิก</button><button class="primary" type="submit">บันทึก</button></div>
+</form></div></div>
+<script src="app.js"></script>
+</body>
+</html>
