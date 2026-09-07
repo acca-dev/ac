@@ -31,7 +31,7 @@ function linkify(s){
     '<a href="$1" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">$1</a>'
   )
 }
-}
+
 
 function fmt(d) {
   return new Intl.DateTimeFormat("th-TH", {
