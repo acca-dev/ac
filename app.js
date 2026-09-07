@@ -303,7 +303,7 @@ function row(item, type) {
               ? " · " + item.qty + " ชิ้น"
               : ""
           }
-          // ${item.notes ? " · " + esc(item.notes) : ""}
+          
           ${item.notes?" · "+linkify(item.notes):""}
         </div>
       </div>
